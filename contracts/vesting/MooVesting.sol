@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.9;
+pragma solidity 0.8.10;
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -229,7 +229,7 @@ contract MOOVesting is AccessControl {
 
         if (i == category.totalSteps) {
           // last step release all
-          addedAmount = _amount.sub(rewarded);
+          addedAmount = _amount.sub(rewarded.add(reward));
         } else {
           addedAmount = _amount.mul(category.percentAfter).div(100_00);
         }
